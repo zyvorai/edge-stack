@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Zyvor Edge Stack</title>
-<meta name="description" content="Eight open Zyvor edge products, one stack: Device Agent, Nodra, Fleet, OTA, relay-edge, relay-pubsub, Zyvor Relay, and Zynera. Real quotes, versions, and diagrams from each product's own docs.">
+<meta name="description" content="Nine Zyvor edge products, one stack: Device Agent, Nodra, Fleet, OTA, Yard, relay-edge, relay-pubsub, Zyvor Relay, and Zynera — plus suite CI that proves how they talk. Real quotes from each product's own docs.">
 <meta property="og:title" content="The Zyvor Edge Stack">
-<meta property="og:description" content="Infrastructure that doesn't stop when the connection does. Eight open Zyvor edge products, one stack.">
+<meta property="og:description" content="Infrastructure that doesn't stop when the connection does. Nine Zyvor edge products, one stack — plus suite CI.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zyvorai.github.io/edge-stack/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Zyvor Edge Stack">
-<meta name="twitter:description" content="Eight open Zyvor edge products, one stack — from the hardware in the rack to the AI brain in the cluster.">
+<meta name="twitter:description" content="Nine Zyvor edge products, one stack — hardware to ops console to Relay — with suite CI that proves the contracts.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23ff5a15'/%3E%3Cpath d='M18.5,20.5 45.5,20.5 18.5,43.5 45.5,43.5' fill='none' stroke='%23fff' stroke-width='8.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,6 +80,21 @@
   .topnav a:hover{color:var(--ink)}
   @media (max-width:640px){ .topnav{display:none} }
 
+  .suite-banner{
+    margin: 0 auto 8px; max-width:1080px;
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 20px;
+    padding:14px 18px; border-radius:var(--radius-md);
+    background:color-mix(in srgb, var(--blue) 8%, var(--surface));
+    border:1px solid color-mix(in srgb, var(--blue) 28%, var(--line));
+  }
+  .suite-banner p{margin:0; font-size:14px; color:var(--ink-mut); max-width:62ch}
+  .suite-banner a.btn{
+    display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+    font-size:13px; font-weight:600; color:#fff; background:var(--blue);
+    padding:8px 14px; border-radius:100px; white-space:nowrap;
+  }
+  .suite-banner a.btn:hover{filter:brightness(1.06)}
+  .suite-banner a.link{font-size:13px; font-weight:600; color:var(--blue-ink); text-decoration:none; margin-right:14px}
   /* ---------- hero ---------- */
   .hero{padding-block:64px 40px}
   .eyebrow{
@@ -114,7 +129,7 @@
   .map{padding-block:8px 56px}
   .map-title{font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px}
   .map-row{
-    display:grid; grid-template-columns:repeat(8,1fr); gap:6px;
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(88px,1fr)); gap:6px;
   }
   .map-cell{
     background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius-sm);
@@ -222,21 +237,31 @@
     </div>
     <nav class="topnav">
       <a href="#map">The stack</a>
+      <a href="#yard">Yard</a>
       <a href="#flow">How it fits</a>
-      <a href="#relay">Core loop</a>
+      <a href="https://github.com/zyvorai/edge-stack/blob/main/docs/HOW_THEY_FIT.md">Suite docs</a>
+      <a href="https://github.com/zyvorai/edge-stack/actions/workflows/suite-ci.yml">Suite CI</a>
     </nav>
+  </div>
+</div>
+
+<div class="suite-banner">
+  <p><b style="color:var(--ink)">Suite CI is green.</b> Hermetic contract smoke proves Device Agent → Yard, Nodra → Yard, Fleet → Yard, and relay-pubsub backends — so you can see how the stack works together without reading six repos.</p>
+  <div>
+    <a class="link" href="https://github.com/zyvorai/edge-stack/blob/main/docs/HOW_THEY_FIT.md">How they fit →</a>
+    <a class="btn" href="https://github.com/zyvorai/edge-stack/actions/workflows/suite-ci.yml">View suite CI</a>
   </div>
 </div>
 
 <section class="wrap hero">
   <div class="wrap-narrow" style="max-width:640px">
-    <span class="eyebrow"><span class="dot"></span>8 products &middot; open source &middot; one stack</span>
+    <span class="eyebrow"><span class="dot"></span>9 products &middot; open source &middot; suite CI</span>
     <h1 class="headline">Infrastructure that doesn't stop when the <em>connection</em> does.</h1>
-    <p class="sub">Eight Zyvor products, each built for a site that has to keep running on its own — from the hardware in the rack to the AI brain in the cluster. This is how they fit together.</p>
+    <p class="sub">Nine Zyvor products for sites that keep running on their own — from the hardware in the rack through <b>Yard</b> (ops console) to the Relay reliability loop. This page is how they fit together.</p>
   </div>
   <div class="hero-stats">
-    <div class="stat"><b>8</b><span>products in the stack</span></div>
-    <div class="stat"><b>8</b><span>now all under the zyvorai org</span></div>
+    <div class="stat"><b>9</b><span>products in the stack</span></div>
+    <div class="stat"><b>21</b><span>suite-ci contract checks</span></div>
     <div class="stat"><b>0</b><span>cloud dependency to keep a site running</span></div>
     <div class="stat"><b>A&rarr;N&rarr;A&rarr;A&rarr;V</b><span>the durable loop every event ends in</span></div>
   </div>
@@ -249,10 +274,11 @@
     <a class="map-cell" href="#nodra"><span class="n">02</span><span class="t">Nodra</span></a>
     <a class="map-cell" href="#fleet"><span class="n">03</span><span class="t">Fleet</span></a>
     <a class="map-cell" href="#ota"><span class="n">04</span><span class="t">OTA</span></a>
-    <a class="map-cell" href="#relay-edge"><span class="n">05</span><span class="t">relay-edge</span></a>
-    <a class="map-cell" href="#relay-pubsub"><span class="n">06</span><span class="t">relay-pubsub</span></a>
-    <a class="map-cell" href="#relay"><span class="n">07</span><span class="t">Zyvor Relay</span></a>
-    <a class="map-cell" href="#zynera"><span class="n">08</span><span class="t">Zynera</span></a>
+    <a class="map-cell" href="#yard"><span class="n">05</span><span class="t">Yard</span></a>
+    <a class="map-cell" href="#relay-edge"><span class="n">06</span><span class="t">relay-edge</span></a>
+    <a class="map-cell" href="#relay-pubsub"><span class="n">07</span><span class="t">relay-pubsub</span></a>
+    <a class="map-cell" href="#relay"><span class="n">08</span><span class="t">Zyvor Relay</span></a>
+    <a class="map-cell" href="#zynera"><span class="n">09</span><span class="t">Zynera</span></a>
   </div>
 </section>
 
@@ -351,7 +377,7 @@
           <li>Local <span class="mono">MQTT</span>/<span class="mono">HTTP</span> ingress in front of a durable, WAL-backed store-and-forward buffer</li>
           <li>Device twins and edge-app reconciliation, offline-first by design &mdash; not offline-tolerant</li>
           <li>Publishes a direct, named comparison against Node-RED, EMQX/HiveMQ Edge, AWS Greengrass, and Azure IoT Edge in its own docs</li>
-          <li>Honest about limits: v0.2 is single-writer by design, HA is roadmap not shipped &mdash; CI runs multi-hour soak tests on a real lab host</li>
+          <li>Honest about limits: file mode is single-writer; Postgres mode has multi-writer delivery/DLQ HA. Staged OTA canary campaigns + outbound MQTT QoS2 are shipped</li>
         </ul>
       </div>
     </div>
@@ -447,12 +473,43 @@
     </div>
   </article>
 
-  <!-- 05 relay-edge -->
-  <article class="product" id="relay-edge">
+
+  <!-- 05 Yard -->
+  <article class="product" id="yard">
     <div class="product-inner">
       <div class="p-head">
         <div class="p-id">
           <span class="p-num">05</span>
+          <svg class="p-mark" viewBox="0 0 64 64" role="img" aria-label="Zyvor"><rect width="64" height="64" rx="15" fill="#0071e3"/><path d="M18.5,20.5 45.5,20.5 18.5,43.5 45.5,43.5" fill="none" stroke="#fff" stroke-width="8.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <div class="p-name">Yard</div>
+            <div class="p-role">Ops console &mdash; assets, incidents, connectors</div>
+          </div>
+        </div>
+        <div class="p-badges">
+          <span class="badge ver">open</span>
+          <span class="badge">zyvorai/yard</span>
+          <span class="badge">Go &middot; React</span>
+        </div>
+      </div>
+      <p class="p-quote">&ldquo;Open asset and operations platform &mdash; devices, sites, telemetry, incidents, and work orders. Zyvor connectors are optional. Yard runs alone.&rdquo;</p>
+      <div class="p-body" style="grid-template-columns:1fr">
+        <ul class="p-list" style="display:grid; grid-template-columns:1fr 1fr; gap:12px 24px">
+          <li>Optional connectors pull <b>Device Agent</b>, <b>Nodra</b>, <b>Fleet</b>, and <b>OTA</b> into one console without owning their planes</li>
+          <li>Actions: <span class="mono">inventory.refresh</span>, <span class="mono">telemetry.receive</span>, <span class="mono">desired.progress</span>, <span class="mono">campaign.list</span></li>
+          <li>HTTP ingest for inventory/observations; severity policies and work-order checklists for day-2 ops</li>
+          <li>Cross-product contracts proven by this repo&rsquo;s <a href="https://github.com/zyvorai/edge-stack/actions/workflows/suite-ci.yml">suite CI</a></li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- 06 relay-edge -->
+  <article class="product" id="relay-edge">
+    <div class="product-inner">
+      <div class="p-head">
+        <div class="p-id">
+          <span class="p-num">06</span>
           <svg class="p-mark" viewBox="0 0 64 64" role="img" aria-label="Zyvor"><rect width="64" height="64" rx="15" fill="#ff5a15"/><path d="M18.5,20.5 45.5,20.5 18.5,43.5 45.5,43.5" fill="none" stroke="#fff" stroke-width="8.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
             <div class="p-name">relay-edge</div>
@@ -486,7 +543,7 @@
     <div class="product-inner">
       <div class="p-head">
         <div class="p-id">
-          <span class="p-num">06</span>
+          <span class="p-num">07</span>
           <svg class="p-mark" viewBox="0 0 64 64" role="img" aria-label="Zyvor"><rect width="64" height="64" rx="15" fill="#0071e3"/><path d="M18.5,20.5 45.5,20.5 18.5,43.5 45.5,43.5" fill="none" stroke="#fff" stroke-width="8.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
             <div class="p-name">relay-pubsub</div>
@@ -516,7 +573,7 @@
     <div class="product-inner">
       <div class="p-head">
         <div class="p-id">
-          <span class="p-num">07</span>
+          <span class="p-num">08</span>
           <svg class="p-mark" viewBox="0 0 64 64" role="img" aria-label="Zyvor"><rect width="64" height="64" rx="15" fill="#ff5a15"/><path d="M18.5,20.5 45.5,20.5 18.5,43.5 45.5,43.5" fill="none" stroke="#fff" stroke-width="8.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
             <div class="p-name">Zyvor Relay</div>
@@ -551,7 +608,7 @@
     <div class="product-inner">
       <div class="p-head">
         <div class="p-id">
-          <span class="p-num">08</span>
+          <span class="p-num">09</span>
           <svg class="p-mark" viewBox="0 0 64 64" role="img" aria-label="Zyvor"><rect width="64" height="64" rx="15" fill="#0071e3"/><path d="M18.5,20.5 45.5,20.5 18.5,43.5 45.5,43.5" fill="none" stroke="#fff" stroke-width="8.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
             <div class="p-name">Zynera</div>
@@ -591,18 +648,22 @@
       </div>
       <div class="flow-step">
         <div class="flow-dot">02</div>
-        <div class="flow-text"><b>Nodra</b> (and, for synthetic/dev traffic, <b>relay-edge</b>) stamp and publish events &mdash; direct, or through <b>relay-pubsub</b>'s Pub/Sub-compatible gateway.</div>
+        <div class="flow-text"><b>Yard</b> optionally pulls Device Agent inventory, Nodra twins/campaigns, and Fleet rollout progress into one ops console via connectors.</div>
       </div>
       <div class="flow-step">
         <div class="flow-dot">03</div>
-        <div class="flow-text"><b>Zyvor Relay</b> runs the durable loop &mdash; <span class="mono">Accept &rarr; Notify &rarr; Ack &rarr; Act &rarr; Verify</span> &mdash; on every event, regardless of which producer sent it.</div>
+        <div class="flow-text"><b>Nodra</b> (and, for synthetic/dev traffic, <b>relay-edge</b>) stamp and publish events &mdash; direct, or through <b>relay-pubsub</b>'s Pub/Sub-compatible gateway.</div>
       </div>
       <div class="flow-step">
         <div class="flow-dot">04</div>
-        <div class="flow-text">When a site runs AI/GPU workloads, Relay can gate a critical act behind a <b>Zynera</b> Decision Record &mdash; human freeze/attest, in Zeus, before Act proceeds.</div>
+        <div class="flow-text"><b>Zyvor Relay</b> runs the durable loop &mdash; <span class="mono">Accept &rarr; Notify &rarr; Ack &rarr; Act &rarr; Verify</span> &mdash; on every event, regardless of which producer sent it.</div>
       </div>
       <div class="flow-step">
         <div class="flow-dot">05</div>
+        <div class="flow-text">When a site runs AI/GPU workloads, Relay can gate a critical act behind a <b>Zynera</b> Decision Record &mdash; human freeze/attest, in Zeus, before Act proceeds.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">06</div>
         <div class="flow-text">Underneath all of it, <b>Fleet</b> assigns the signed releases that <b>OTA</b> installs, verifies, and &mdash; if health checks fail &mdash; rolls back on its own.</div>
       </div>
     </div>
@@ -615,9 +676,9 @@
       <svg viewBox="0 0 64 64" role="img" aria-label="Zyvor"><rect width="64" height="64" rx="15" fill="#ff5a15"/><path d="M18.5,20.5 45.5,20.5 18.5,43.5 45.5,43.5" fill="none" stroke="#fff" stroke-width="8.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Zyvor</span>
     </div>
-    <span class="mono" style="font-size:12px; color:var(--ink-faint)">8 products &middot; 6 public, 2 private &middot; all zyvorai</span>
+    <span class="mono" style="font-size:12px; color:var(--ink-faint)">9 products &middot; suite CI on every push &middot; all zyvorai</span>
   </div>
-  <p class="foot-note">Every quote, version tag, and stat on this page is pulled directly from each product's own README and docs as of September 2026 &mdash; nothing here is invented. Diagrams are the products' own, inlined as-is.</p>
+  <p class="foot-note">Every quote, version tag, and stat on this page is pulled from each product's own README and docs as of September 2026 &mdash; nothing invented. Cross-product contract proof: <a href="https://github.com/zyvorai/edge-stack/blob/main/docs/HOW_THEY_FIT.md">HOW_THEY_FIT.md</a> + <a href="https://github.com/zyvorai/edge-stack/actions/workflows/suite-ci.yml">suite CI</a>.</p>
 </footer>
 
 <script>

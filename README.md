@@ -3,7 +3,9 @@
 **Live:** https://zyvorai.github.io/edge-stack/
 
 Landing page **and suite CI** for the Zyvor edge line — Device Agent, Nodra,
-Fleet, OTA, Yard, relay-edge, relay-pubsub (and optional Relay / Zynera).
+Fleet, OTA, **Yard**, relay-edge, relay-pubsub (and optional Relay / Zynera).
+
+**Live pages:** https://zyvorai.github.io/edge-stack/
 
 ## How the products work together
 
