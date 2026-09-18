@@ -16,8 +16,11 @@ Read this first:
 - **[docs/SUITE_CI.md](docs/SUITE_CI.md)** — what the cross-product CI proves
 
 ```bash
+make ci
 ./scripts/run-suite-smoke.sh
 ```
+
+`make help` lists the suite targets. Product builds stay in each repo's Makefile (`make help` there too).
 
 Hermetic Python stubs speak the same HTTP shapes Yard’s connectors call.
 GitHub Actions workflow **`suite-ci`** runs that smoke on every push/PR.
