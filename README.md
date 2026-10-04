@@ -4,7 +4,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Pages](https://img.shields.io/badge/docs-GitHub%20Pages-informational)](https://zyvorai.github.io/edge-stack/)
 
-![Zyvor Edge Stack — one map of the edge line](docs/social/edge-stack-share-card.png)
+![Zyvor Edge Stack — one map of the edge line](docs/social/edge-stack-hero-dark.jpg)
 
 **One map of the Zyvor edge line — landing page and suite CI.**
 
