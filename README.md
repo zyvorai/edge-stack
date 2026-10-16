@@ -100,13 +100,14 @@ GitHub Actions workflow **`suite-ci`** runs that smoke on every push and pull re
 
 ## Landing page
 
-- **`index.html`** — static marketing/docs site (GitHub Pages from `main` `/`).
+- **`site/`** — the static landing page (no dependencies, light and dark), deployed by `.github/workflows/pages.yml`. GitHub Pages must use Source = GitHub Actions for it to go live.
+- **`index.html`** — the previous single-file landing page, kept unchanged (served only while Pages still uses `main` `/`).
 
 ## Updating this repo
 
 | Change | Where |
 |---|---|
-| Marketing copy / layout | `index.html` |
+| Marketing copy / layout | `site/index.html`, `site/site.css` |
 | Suite narrative / ports / ownership | `docs/HOW_THEY_FIT.md` |
 | Connector wire shapes | `scripts/suite_peers.py` + `scripts/suite_smoke.py` |
 | Share cards | `docs/social/` — `./docs/social/build-social-card.sh` |
@@ -130,6 +131,12 @@ GitHub Actions workflow **`suite-ci`** runs that smoke on every push and pull re
 | **[relay-edge](https://github.com/zyvorai/relay-edge)** · **[relay-pubsub](https://github.com/zyvorai/relay-pubsub)** | Site event simulators · Google Pub/Sub–compatible gateway into Zyvor Relay |
 
 → [zyvor.dev](https://zyvor.dev)
+
+---
+
+## Support
+
+Free under Apache-2.0. If it helps you, you can donate any amount you like: <https://rzp.io/rzp/utwdYh3>. A donation is voluntary and supports development and maintenance. It is not a purchase: it buys no support, SLA, features, priority or license, and it is not tax-deductible (Zyvor AI Labs Private Limited is a company, not a charity). Support contracts are separate: [sales@zyvor.dev](mailto:sales@zyvor.dev).
 
 ---
 
