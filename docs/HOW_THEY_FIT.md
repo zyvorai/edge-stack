@@ -72,7 +72,8 @@ own and shows it as assets, observations, and integration status.
    - `POST /api/v1/ingest/observations`
 4. Lab self-signed TLS: Yard skips verify on `https://` unless
    `config.tls_insecure` is explicitly `false`. Agent bearer lives in
-   `config.auth_token`.
+   `config.auth_token`. **Warning:** that default disables certificate
+   verification; set `tls_insecure: false` for anything beyond a lab.
 
 **Console action:** `inventory.refresh` / `sync` · `diagnostics.read`
 
@@ -114,7 +115,7 @@ Fleet owns desired state and rollout waves. Yard shows progress.
 
 ---
 
-## Path D — OTA agent ↔ Fleet / Nodra
+## OTA boundary — OTA agent ↔ Fleet / Nodra
 
 | Concern | Owner |
 |---|---|
@@ -129,7 +130,7 @@ OTA device lists.
 
 ---
 
-## Path E — relay-pubsub → Relay
+## Path D — relay-pubsub → Relay
 
 | `--backend` / `RELAY_BACKEND` | Role |
 |---|---|

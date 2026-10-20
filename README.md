@@ -32,7 +32,7 @@ This repository is **not** a monorepo build. It hosts the static GitHub Pages la
 | When this happens… | Zyvor Edge Stack gives you… |
 |---|---|
 | Every edge product has a green CI, and you still ask how they work together | One map ([HOW_THEY_FIT.md](docs/HOW_THEY_FIT.md)): what each product owns, the data paths between them, lab ports and ownership |
-| A product changes a wire contract and the ops console quietly stops syncing | `suite-ci` exercises the HTTP contracts Yard's connectors call, on every push and pull request to `main` |
+| A product changes a wire contract and the ops console quietly stops syncing | `suite-ci` exercises the HTTP contracts Yard's connectors call, on every push to `main` and every pull request |
 | Proving integration means building six language toolchains | Hermetic in-process stubs for Device Agent, Nodra, Fleet and a Yard ingest sink, in plain Python |
 | Nobody is sure which product owns OTA, rollouts or twins | An ownership table per path: OTA owns signed RAUC installs, Fleet the device assignment contract, Nodra the canary campaigns, Yard the display |
 | A suite test claims more than it proves | A written list of what suite CI does **not** claim: full builds, RAUC flashing, Fleet HA, live lab hosts |
@@ -96,7 +96,7 @@ make ci
 
 ## Suite CI
 
-GitHub Actions workflow **`suite-ci`** runs that smoke on every push and pull request to `main`. Hermetic stubs in `scripts/suite_peers.py` and `scripts/suite_smoke.py` speak the same HTTP shapes Yard's connectors call.
+GitHub Actions workflow **`suite-ci`** runs that smoke on every push to `main` and on every pull request. Hermetic stubs in `scripts/suite_peers.py` and `scripts/suite_smoke.py` speak the same HTTP shapes Yard's connectors call.
 
 ## Landing page
 
