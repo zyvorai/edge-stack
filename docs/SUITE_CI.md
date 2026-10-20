@@ -42,6 +42,11 @@ Details and diagrams: [HOW_THEY_FIT.md](HOW_THEY_FIT.md).
 - RAUC flash / Minewing silicon HIL (see zyvor-ota)
 - Multi-writer Fleet HA (design-only; soak-short is single-writer)
 - Live lab hosts (optional follow-up; this job is hermetic)
+- Fidelity to the real products: the stubs are hand-written, not derived from
+  upstream specs, so an upstream contract change does not turn this CI red
+  until the stubs are updated
+- Path D checks a hard-coded description of relay-pubsub's documented
+  backends; it does not exercise relay-pubsub code
 
 ## Reading a green check
 

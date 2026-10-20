@@ -66,6 +66,9 @@ def http_json(
             return e.code, json.loads(raw) if raw else None
         except Exception:
             return e.code, raw.decode("utf-8", "replace")[:300]
+    except (urllib.error.URLError, OSError, ValueError) as e:
+        # connection failures and bad JSON count as a FAIL, not a traceback
+        return 0, str(e)
 
 
 def require(cond: bool, label: str, detail: str = "") -> None:
