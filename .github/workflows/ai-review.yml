@@ -24,14 +24,30 @@ jobs:
           BASE: ${{ github.event.pull_request.base.sha }}
           HEAD: ${{ github.event.pull_request.head.sha }}
           PR: ${{ github.event.pull_request.number }}
+        shell: bash
         run: |
           [ -n "$ANTHROPIC_API_KEY" ] || { echo "no key; skipping"; exit 0; }
-          git diff "$BASE...$HEAD" -- . ':(exclude)*.lock' ':(exclude)*-lock.json' ':(exclude)go.sum' | head -c 120000 > diff.txt
-          [ -s diff.txt ] || exit 0
-          jq -n --rawfile d diff.txt '{model:"claude-sonnet-5-5",max_tokens:1500,
-            messages:[{role:"user",content:("Review this pull request diff. List only concrete bugs, security issues, and missing tests, citing file and line. Be brief; say \"No issues found\" if clean.\n\n"+$d)}]}' > req.json
+          git diff "$BASE...$HEAD" -- . ':(exclude)*.lock' ':(exclude)*-lock.json' ':(exclude)go.sum' > full.diff
+          [ -s full.diff ] || exit 0
+          head -c 120000 full.diff > diff.txt
+          NOTE=""
+          if [ "$(wc -c < full.diff)" -gt 120000 ]; then
+            NOTE="_Note: the diff was truncated to 120 KB; later files were not reviewed._"
+          fi
+          jq -n --rawfile d diff.txt '{
+            model: "claude-sonnet-5-5",
+            max_tokens: 1500,
+            thinking: {type: "between_tools"},
+            messages: [{role: "user", content: ("Review this pull request diff. List only concrete bugs, security issues, and missing tests, citing file and line. Be brief; say \"No issues found\" if clean.\n\n" + $d)}]
+          }' > req.json
           curl -sS --fail-with-body https://api.anthropic.com/v1/messages \
-            -H "x-api-key: $ANTHROPIC_API_KEY" -H "anthropic-version: 2023-06-01" \
-            -H "content-type: application/json" -d @req.json > resp.json
-          jq -r '"### AI review (advisory)\n\n" + (.content[0].text // "no response")' resp.json > comment.md
+            -H "x-api-key: $ANTHROPIC_API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "content-type: application/json" \
+            -d @req.json > resp.json
+          TEXT=$(jq -r '[.content[]? | select(.type == "text") | .text] | join("")' resp.json)
+          if [ -z "$TEXT" ]; then
+            TEXT="No review text returned (stop_reason: $(jq -r '.stop_reason' resp.json))."
+          fi
+          printf '### AI review (advisory)\n\n%s\n\n%s\n' "$TEXT" "$NOTE" > comment.md
           gh pr comment "$PR" --body-file comment.md
