@@ -27,6 +27,8 @@
 
 This repository is **not** a monorepo build. It hosts the static GitHub Pages landing for Device Agent, Nodra, Fleet, OTA, Yard, relay-edge, relay-pubsub (and optional Relay / Zynera), plus hermetic Python stubs that prove cross-product HTTP wire shapes Yard connectors rely on. Every quote and diagram on the page comes from each product's own docs.
 
+[Client overview (PDF)](docs/Zyvor-Edge-Stack-Client-Overview.pdf)
+
 ## Why Zyvor Edge Stack
 
 | When this happens… | Zyvor Edge Stack gives you… |
