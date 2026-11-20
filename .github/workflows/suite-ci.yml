@@ -1,0 +1,44 @@
+# Cross-product suite CI
+#
+# Proves Device Agent ↔ Nodra ↔ Fleet ↔ Yard ingest ↔ relay-pubsub contracts
+# without building every product binary. See docs/SUITE_CI.md.
+name: suite-ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: suite-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  suite-smoke:
+    name: Cross-product suite smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile suite scripts
+        working-directory: scripts
+        run: python3 -m py_compile suite_peers.py suite_smoke.py
+
+      - name: Run suite smoke
+        run: ./scripts/run-suite-smoke.sh
+
+      - name: Docs present
+        run: |
+          test -f docs/HOW_THEY_FIT.md
+          test -f docs/SUITE_CI.md
+          grep -q 'Path A' docs/HOW_THEY_FIT.md
+          grep -q 'suite_smoke.py' docs/SUITE_CI.md

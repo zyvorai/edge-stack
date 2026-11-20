@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zyvorai.github.io/edge-stack/sitemap.xml
