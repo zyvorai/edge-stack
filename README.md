@@ -3,7 +3,7 @@
 # Zyvor Edge Stack
 
 [![Suite CI](https://github.com/zyvorai/edge-stack/actions/workflows/suite-ci.yml/badge.svg)](https://github.com/zyvorai/edge-stack/actions/workflows/suite-ci.yml)
-[![License: Zyvor Production 1.0](https://img.shields.io/badge/License-Zyvor_Production_1.0-1d1d1f.svg)](LICENSE)
+[![License: Zyvor Production 1.0](https://img.shields.io/badge/License-Zyvor_Production_2.0-1d1d1f.svg)](LICENSE)
 [![Pages](https://img.shields.io/badge/docs-GitHub%20Pages-informational)](https://zyvorai.github.io/edge-stack/)
 [![Python](https://img.shields.io/badge/Python-3%20stdlib-3776AB?logo=python&logoColor=white)](scripts)
 
@@ -124,11 +124,11 @@ A commercial license is required to run it (sales@zyvor.dev); a 30-day trial key
 
 ## License and support
 
-Zyvor Edge Stack is source-available under the **[Zyvor Production License v1.0](LICENSE)** (SPDX `LicenseRef-Zyvor-Production-1.0`, also in [LICENSES/](LICENSES/LicenseRef-Zyvor-Production-1.0.txt); see [NOTICE](NOTICE)). Evaluation (evaluation, development, testing, research, education) is free for 30 days per organization. Production use requires a commercial license from Zyvor AI Labs Private Limited ([sales@zyvor.dev](mailto:sales@zyvor.dev), [zyvor.dev/buy](https://zyvor.dev/buy)); a 30-day trial key is available for production evaluation.
+Zyvor Edge Stack is source-available under the **[Zyvor Production Licence v2.0](LICENSE)** (SPDX `LicenseRef-Zyvor-Production-2.0`, also in [LICENSES/](LICENSES/LicenseRef-Zyvor-Production-2.0.txt); see [NOTICE](NOTICE)). A 30-day trial is available on request from sales@zyvor.dev (a paid evaluation Order at no charge); production and any other use needs a paid Order under the Zyvor Production Licence v2.0. Buy: [zyvor.dev/buy](https://zyvor.dev/buy).
 
 **Zyvor Enterprise** adds what production teams ask for: supported releases, deployment and upgrade guidance, priority incident triage, a named technical contact and 24x7 critical intake. [Pricing](https://zyvor.dev/pricing?utm_source=github&utm_medium=edge-stack&utm_campaign=readme_license) · [Buy / get a quote](https://zyvor.dev/buy) · [sales@zyvor.dev](mailto:sales@zyvor.dev).
 
-Prices: INR incl. 18% GST in India; US dollars excl. tax elsewhere (VAT, GST or sales tax added where applicable). Edge support is per managed device per year: 1-999 devices USD 18 (INR 1,784), 1,000-9,999 USD 12 (INR 1,189), 10,000+ USD 8 (INR 793), annual minimum USD 5,000 (INR 495,600). A 30-day trial key is available; non-production use of the software stays free under the Zyvor Production License v1.0. Buy / get a quote: [zyvor.dev/buy](https://zyvor.dev/buy). Orders of USD 5,000 or more and quotes are invoiced in USD through Skydo. Custom pricing: contact [sales@zyvor.dev](mailto:sales@zyvor.dev).
+Prices: INR incl. 18% GST in India; US dollars excl. tax elsewhere (VAT, GST or sales tax added where applicable). Edge support is per managed device per year: 1-999 devices USD 18 (INR 1,784), 1,000-9,999 USD 12 (INR 1,189), 10,000+ USD 8 (INR 793), annual minimum USD 5,000 (INR 495,600). A 30-day trial is available on request from sales@zyvor.dev (a paid evaluation Order at no charge); production and any other use needs a paid Order under the Zyvor Production Licence v2.0. Buy / get a quote: [zyvor.dev/buy](https://zyvor.dev/buy). Orders of USD 5,000 or more and quotes are invoiced in USD through Skydo. Custom pricing: contact [sales@zyvor.dev](mailto:sales@zyvor.dev).
 
 ---
 
